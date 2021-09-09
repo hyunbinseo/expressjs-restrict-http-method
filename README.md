@@ -2,6 +2,30 @@
 
 - [x] Use code provided by [official documents](#reference)
 
+# Specifications
+
+Request with `GET` or `POST`
+
+→ Respond with `200` and `OK`
+
+---
+
+Request with other [valid methods](#known-request-method-type)
+
+→ Respond with `405` and `Method Not Allowed`
+
+---
+
+Request with [invalid methods](#known-request-method-type)
+
+→ Respond with `400` (Related [GitHub Issue](https://github.com/nodejs/node/issues/17248))
+
+---
+
+Error occurs in Express.js
+
+→ Respond with `500` and `Error Occurred`
+
 # Features
 
 - [x] Restrict [Known Request Method Type](#known-request-method-type)
