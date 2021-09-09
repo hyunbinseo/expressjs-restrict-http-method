@@ -2,9 +2,8 @@
   "name": "node-http-error-handling",
   "version": "1.0.0",
   "description": "Error Handling Example for Node.js HTTP and Express.js",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/with-express.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Hyunbin",
