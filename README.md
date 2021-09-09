@@ -2,6 +2,10 @@
 
 - [x] Use code provided by [official documents](#reference)
 
+# Demo
+
+* Web hosted [demo](https://node-http-error-handling.herokuapp.com/) provided by Heroku
+
 # Specifications
 
 Request with `GET` or `POST`
@@ -19,6 +23,16 @@ Request with other [valid methods](#known-request-method-type)
 Request with [invalid methods](#known-request-method-type)
 
 → Respond with `400` (Related [GitHub Issue](https://github.com/nodejs/node/issues/17248))
+
+```
+const http = require('http');
+http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.end('OK');
+}).listen(80);
+
+// Request using `AAA` method returns `400`
+```
 
 ---
 
