@@ -33,7 +33,7 @@ Error occurs in Express.js
 
 # Demo
 
-Web hosted [demo](https://node-http-error-handling.herokuapp.com/) provided by Heroku
+Web hosted [demo](https://expressjs-restrict-http-method.herokuapp.com/) provided by Heroku
 - Initial load maybe slow due to [Dyno sleeping](https://devcenter.heroku.com/articles/dynos#dyno-sleeping)
 - Based on `with-express.js` code
 
