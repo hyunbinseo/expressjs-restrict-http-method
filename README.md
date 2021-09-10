@@ -1,17 +1,11 @@
-# Goals
+# Features
 
-- [x] Use code provided by [official documents](#reference)
-- [x] Provide example with and with-out Express.js
+[Example Code](#code) with and without using Express.js
 
-# Code
-
-Check the following files in `src` directory
-- `with-express.js`
-- `without-express.js`
-
-# Demo
-
-* Web hosted [demo](https://node-http-error-handling.herokuapp.com/) provided by Heroku
+| Feature | [Express.js](https://expressjs.com/) | [HTTP](https://nodejs.org/api/http.html) |  |
+| -- | -- | -- | -- |
+| Restrict [HTTP Request Methods](https://developer.mozilla.org/docs/Web/HTTP/Methods) | &check; | &check; | [Valid Request Methods](#valid-request-methods-in-nodejs) Only |
+| Handle Error with a Custom Function | &check; |  |
 
 # Specifications
 
@@ -21,25 +15,15 @@ Request with `GET` or `POST`
 
 ---
 
-Request with other [valid methods](#known-request-method-type)
+Request with other [valid request methods](#valid-request-methods-in-nodejs)
 
 → Respond with `405` and `Method Not Allowed`
 
 ---
 
-Request with [invalid methods](#known-request-method-type)
+Request with any invalid request methods
 
-→ Respond with `400` (Related [GitHub Issue](https://github.com/nodejs/node/issues/17248))
-
-```
-const http = require('http');
-http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.end('OK');
-}).listen(80);
-
-// Request using `AAA` method returns `400`
-```
+→ Respond with `400` (related [GitHub issue](https://github.com/nodejs/node/issues/17248))
 
 ---
 
@@ -47,12 +31,49 @@ Error occurs in Express.js
 
 → Respond with `500` and `Error Occurred`
 
-# Features
+# Demo
 
-- [x] Restrict [Known Request Method Type](#known-request-method-type)
-- [ ] Restrict Unknown Request Method Type
+Web hosted [demo](https://node-http-error-handling.herokuapp.com/) provided by Heroku
+- Initial load maybe slow due to [Dyno sleeping](https://devcenter.heroku.com/articles/dynos#dyno-sleeping)
+- Based on `with-express.js` code
 
-## Known Request Method Type
+# Code
+
+Check the following files in the `src` directory
+- `with-express.js`
+- `without-express.js`
+
+# Appendix
+
+## Express.js vs Node.js [HTTP](https://nodejs.org/api/http.html)
+
+Express.js `app.listen()` simply returns a Node.js `http.Server`
+
+```
+/**
+ * Listen for connections.
+ *
+ * A node `http.Server` is returned, with this
+ * application (which is a `Function`) as its
+ * callback. If you wish to create both an HTTP
+ * and HTTPS server you may do so with the "http"
+ * and "https" modules as shown here:
+ *
+ *    var http = require('http')
+ *      , https = require('https')
+ *      , express = require('express')
+ *      , app = express();
+ *
+ *    http.createServer(app).listen(80);
+ *    https.createServer({ ... }, app).listen(443);
+ *
+ * @return {http.Server}
+ * @public
+ */
+```
+[expressjs / express / lib / application.js, GitHub](https://github.com/expressjs/express/blob/master/lib/application.js#L595-L614)
+
+## Valid Request Methods in Node.js
 
 Node.js HTTP Parser only considers these methods as valid
 
@@ -95,7 +116,18 @@ switch (ch) {
 
 Therefore [in Node.js HTTP, invalid HTTP method returns a 400](https://github.com/nodejs/node/issues/17248).
 
-# Reference
+```
+const http = require('http');
+http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.end('OK');
+}).listen(80);
+
+// Respond to all requests with `200` and `OK`
+// Request using `AAA` method responds with `400`
+```
+
+## Reference Code From Official Documents
 
 ```
 const express = require('express')
@@ -123,8 +155,8 @@ function errorHandler (err, req, res, next) {
 
 [The default error handler, Express.js Docs](http://expressjs.com/en/guide/error-handling.html#the-default-error-handler)
 
-# Environment
+## Environment Used
 
-- node `>=16.7.0`
-- npm `>=7.20.3`
-- express `^4.17.1`
+- node `v16.7.0`
+- npm `v7.20.3`
+- express `v4.17.1`
