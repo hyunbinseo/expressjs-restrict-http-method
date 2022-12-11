@@ -44,10 +44,4 @@ app.use((err, req, res, next) => {
     .send('Error Occurred');
 });
 
-/**
- * The port to bind to is assigned by Heroku as the PORT environment variable
- * https://devcenter.heroku.com/articles/runtime-principles#web-servers
- * https://devcenter.heroku.com/articles/deploying-nodejs#specifying-a-start-script
- */
-
-http.createServer(app).listen(process.env.PORT || 80);
+http.createServer(app).listen(80);

@@ -31,12 +31,6 @@ Error occurs in Express.js
 
 → Respond with `500` and `Error Occurred`
 
-# Demo
-
-Web hosted [demo](https://expressjs-restrict-http-method.herokuapp.com/) provided by Heroku
-- Initial load maybe slow due to [Dyno sleeping](https://devcenter.heroku.com/articles/dynos#dyno-sleeping)
-- Based on `with-express.js` code
-
 # Code
 
 Check the following files in the `src` directory
@@ -154,9 +148,3 @@ function errorHandler (err, req, res, next) {
 ```
 
 [The default error handler, Express.js Docs](http://expressjs.com/en/guide/error-handling.html#the-default-error-handler)
-
-## Environment Used
-
-- node `v16.7.0`
-- npm `v7.20.3`
-- express `v4.17.1`

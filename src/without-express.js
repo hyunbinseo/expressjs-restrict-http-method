@@ -14,4 +14,4 @@ http.createServer((req, res) => {
     res.statusCode = 405;
     res.end('Method Not Allowed');
   }
-}).listen(process.env.PORT || 80);
+}).listen(80);
