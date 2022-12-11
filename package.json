@@ -1,23 +1,17 @@
 {
   "name": "expressjs-restrict-http-method",
-  "version": "1.0.0",
   "description": "Restrict HTTP Request Methods in Express.js and Node.js HTTP",
   "scripts": {
-    "start": "node src/with-express.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/with-express.js"
   },
   "author": "Hyunbin",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.18.2"
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^8.29.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.24.2"
-  },
-  "engines": {
-    "node": ">=16.7.0",
-    "npm": ">=7.20.3"
   }
 }
