@@ -1,5 +1,5 @@
 const express = require('express');
-const http = require('http');
+const http = require('node:http');
 
 const app = express();
 
@@ -8,10 +8,10 @@ const app = express();
  * Invalid methods are not handled here (Check README.md)
  */
 
-const { isAllowedMethod } = require('./utilities');
+const { allowedMethods, makeRequests } = require('./utilities');
 
 app.use((req, res, next) => {
-  if (isAllowedMethod(req.method)) {
+  if (allowedMethods.has(req.method)) {
     next();
   } else {
     res
@@ -45,3 +45,5 @@ app.use((err, req, res, next) => {
 });
 
 http.createServer(app).listen(80);
+
+makeRequests();

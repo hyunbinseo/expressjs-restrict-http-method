@@ -1,3 +1,28 @@
+# TL;DR
+
+Run `npm run http` and `npm run express`.
+
+Both scripts log `INVALID: 400`, instead of `405`.
+
+```sh
+# Request Method: Response Status
+
+# Allowed methods
+GET: 200
+POST: 200
+
+# Un-allowed methods
+DELETE: 405
+PUT: 405
+
+# Invalid method(s)
+INVALID: 400
+```
+
+In Node.js, invalid HTTP methods always return `400`.
+
+This behavior cannot be customized, as it is hardcoded.
+
 # Features
 
 [Example Code](#code) with and without using Express.js
@@ -30,12 +55,6 @@ Request with any invalid request methods
 Error occurs in Express.js
 
 → Respond with `500` and `Error Occurred`
-
-# Code
-
-Check the following files in the `src` directory
-- `with-express.js`
-- `without-express.js`
 
 # Appendix
 

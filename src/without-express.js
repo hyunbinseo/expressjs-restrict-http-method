@@ -1,13 +1,13 @@
-const http = require('http');
+const http = require('node:http');
 
-const { isAllowedMethod } = require('./utilities');
+const { allowedMethods, makeRequests } = require('./utilities');
 
 http.createServer((req, res) => {
   /**
    * Restrict request methods - Only allows `allowedMethods`
    * Invalid methods are not handled here (Check README.md)
    */
-  if (isAllowedMethod(req.method)) {
+  if (allowedMethods.has(req.method)) {
     res.statusCode = 200;
     res.end('OK');
   } else {
@@ -15,3 +15,5 @@ http.createServer((req, res) => {
     res.end('Method Not Allowed');
   }
 }).listen(80);
+
+makeRequests();
